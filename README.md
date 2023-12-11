@@ -1,27 +1,18 @@
-<h1 align="center">Cspms-YT</h1>
+# Project CSPMS-YT
 
-<p>
-  This project was generated with Angular CLI version 16.1.3.
-</p>
+This is the repository for the CSPMS-YT project. Here, you'll find the source code and project structure.
 
-## Development server
+## Start the Frontend
 
-Run `npm start` for a dev server in the frontend. The app will automatically reload if you change any of the source files. Also, navigate to backend file with `cd backend` and run `npm start` to start the backend server.
+To start the `frontend`, run the following command:
 
-## Create the  MySQL database
-
-Copy the database script `Cspms-Db` in the `backend` file and run to generate the database in any MySQL client.
-
-## Config your conection between backend and you MySQL database
-Navigate to backend/app.js and change the details to your MySQL database details.
-```json
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
-});
+```bash
+npm start
 ```
-## Deploy the app
 
-Navigate to `http://localhost:4200/` and you will see the project.
+## Start the Backend API
+To start the backend API, ensure you have Python installed. Then, navigate to the `backend` directory and execute the following command:
+
+```bash
+python app.py
+```
