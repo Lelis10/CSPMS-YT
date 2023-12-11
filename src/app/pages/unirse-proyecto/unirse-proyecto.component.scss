@@ -1,0 +1,4 @@
+.custom-modal-content {
+    max-height: 80vh; /* Cambia este valor según lo que necesites, puede ser un porcentaje o un valor en píxeles */
+    overflow-y: auto; /* Agregamos scroll vertical si el contenido excede el tamaño máximo */
+  }

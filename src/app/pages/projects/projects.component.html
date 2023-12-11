@@ -1,0 +1,56 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <!-- ... Código previo ... -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <!-- ... Código previo ... -->
+            </div>
+            <div class="card-body">
+                <table class="table table-striped projects">
+                    <thead>
+                      <tr>
+                        <th>Nombre del proyecto</th>
+                        <th>Escuela</th>
+                        <th>Director</th>
+                        <th>Estado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let project of projects">
+                        <td>
+                          <!-- Utilizamos el enlace routerLink para redirigir al usuario al hacer clic en el nombre del proyecto -->
+                          {{ project.nombre_proyecto }}
+                        </td>
+                        <td>{{ project.escuela }}</td>
+                        <td>{{ project.director }}</td>
+                        <td>{{ project.estado }}</td>
+
+                        <td class="project-actions text-right">
+                            <!-- Mostramos el botón "Ver" solo si el estado no es "Pendiente" ni "Cerrado" -->
+                            <a class="btn btn-primary btn-sm" [routerLink]="'/project-info'" *ngIf="project.estado !== 'pendiente' && project.estado !== 'Cerrado'">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <!-- Mostramos el botón "Unirse" solo si el estado no es "Pendiente" ni "Cerrado" -->
+                            <a class="btn btn-info btn-sm" [routerLink]="'/join-project'" [queryParams]="{ id: project.id }" *ngIf="project.estado !== 'pendiente' && project.estado !== 'Cerrado'">
+                                <i class="fas fa-users"></i> Unirse
+                            </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                Esta tabla viene de la tabla de los proyectos de la base de datos
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">Footer</div>
+            <!-- /.card-footer-->
+        </div>
+    </div>
+    <!-- /.card -->
+</section>
+<!-- /.content -->

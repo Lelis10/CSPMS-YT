@@ -1,0 +1,88 @@
+<div class="container-fluid d-print-block">
+    <header class="row">
+      <div class="col-12 pt-3 pb-3">
+        <!-- Project name -->
+        <h1>{{ message?.nombre_proyecto }}</h1>
+      </div>
+    </header>
+  
+    <div class="row pb-3 d-print-block">
+      <div class="col-12">
+        <section aria-label="Contenido">
+          <span class="notifications" id="user-notifications"></span>
+          <div role="main">
+            <div class="course-content">
+              <div class="single-section onetopic">
+                <!-- Tabs navigation -->
+                <ul class="nav nav-tabs mb-3">
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{ 'active': activeTab === 'General' }" (click)="changeTab('General')">
+                      <span class="sectionname">General</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{ 'active': activeTab === 'Estudiantes' }" (click)="changeTab('Estudiantes')">
+                      <span class="sectionname">Estudiantes</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{ 'active': activeTab === 'Reportes' }" (click)="changeTab('Reportes')">
+                      <span class="sectionname">Reportes</span>
+                    </a>
+                  </li>
+                </ul>
+  
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  
+    <!-- Contenedor del contenido a mostrar -->
+    <div class="row pb-3 d-print-block">
+      <div class="col-12">
+        <!-- Contenido para la opción "General" -->
+        <div *ngIf="activeTab === 'General'">
+          <h2>Contenido General</h2>
+          <p>Aquí va el contenido general.</p>
+        </div>
+  
+        <!-- Contenido para la opción "Estudiantes" -->
+        <div *ngIf="activeTab === 'Estudiantes'">
+          <h2>Contenido para Estudiantes</h2>
+          <p>Aquí va el contenido dirigido a estudiantes.</p>
+        </div>
+  
+        <!-- Contenido para la opción "Reportes" -->
+        <div *ngIf="activeTab === 'Reportes'">
+          <div class="card-body p-0">
+            <table class="table table-striped projects">
+              <thead>
+                <tr>
+                  <!-- Column headers... -->
+                  <th>Subir Reportes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let project of projects; let i = index">
+                  <tr>
+                    <!-- Other columns... -->
+                    <td>
+                      <input type="file" (change)="onFileSelected($event, project)" accept=".docx" />
+                      <small *ngIf="project.file">{{ project.file.name }}</small>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+            <div class="text-center mt-5 mb-3">
+              <button class="btn btn-sm btn-primary" (click)="addNewFile()">Añadir otro Reporte</button>
+              <a href="#" class="btn btn-sm btn-warning">Enviar Reporte(s)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,30 @@
+<div id="section-2" class="section main clearfix" role="region" aria-labelledby="sectionid-30635-title" data-sectionid="2">
+    <div class="left side"></div>
+    <div class="right side">
+      <img class="icon spacer" width="1" height="1" alt="" aria-hidden="true" src="https://entorno-uitey.yachaytech.edu.ec:8443/theme/image.php/boost/core/1689258063/spacer">
+    </div>
+    <div class="content">
+      <h3 id="sectionid-30635-title" class="sectionname accesshide">
+        <span>
+          <a href="https://entorno-uitey.yachaytech.edu.ec:8443/course/view.php?id=3365&amp;section=2">Reportes</a>
+        </span>
+      </h3>
+      <div class="section_availability"></div>
+      <div class="summary"></div>
+  
+      <!-- File upload for assignments -->
+      <div class="file-upload">
+        <label for="assignmentFile">Subir Asignación (Formato: docx)</label>
+        <input type="file" id="assignmentFile" accept=".docx" (change)="onAssignmentFileSelected($event)">
+        <button class="btn btn-primary" (click)="uploadAssignment()">Subir</button>
+      </div>
+  
+      <!-- Display uploaded assignments -->
+      <ul class="uploaded-assignments">
+        <li *ngFor="let assignment of uploadedAssignments">
+          {{ assignment.name }} - {{ assignment.size }} bytes
+        </li>
+      </ul>
+    </div>
+  </div>
+  

@@ -1,0 +1,51 @@
+<div class="content">
+  <h2>Unirse a Proyecto</h2>
+  <form>
+    <!-- Campos comunes para todos los roles -->
+        <!-- Mostrar campos adicionales solo para role 2 o 3 -->
+          <div class="form-group">
+            <label for="nombres">Nombres</label>
+            <input type="text" class="form-control" id="nombres" [(ngModel)]="nombres" name="nombres" required (input)="onInputToUpper($event)">
+          </div>
+    
+          <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" [(ngModel)]="apellidos" name="apellidos" required (input)="onInputToUpper($event)">
+          </div>
+    
+          <div class="form-group">
+            <label for="cedula">Número de Cedula</label>
+            <input type="text" class="form-control" id="cedula" [(ngModel)]="cedula" name="cedula" required>
+          </div>
+
+    <div class="form-group">
+      <label for="escuela">Escuela</label>
+      <select class="form-control" id="escuela" name="escuela" [(ngModel)]="escuelaSeleccionada" required>
+        <option value="" disabled selected>Escoge tu escuela</option>
+        <option *ngFor="let escuela of escuelas" [value]="escuela.value">{{ escuela.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="semestre">Semestre</label>
+      <select class="form-control" id="semestre" name="semestre" [(ngModel)]="semestreSeleccionado" required>
+        <option value="" disabled selected>Escoge tu semestre</option>
+        <option *ngFor="let semestre of semestres" [value]="semestre">{{ semestre }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono</label>
+      <input type="text" class="form-control" id="telefono" [(ngModel)]="telefono" name="telefono" required>
+    </div>
+
+
+
+      <div class="form-group">
+        <label for="formatoV2">Subir el Formato V2</label>
+        <input type="file" class="form-control-file" id="formatoV2" (change)="onFileChange($event)" accept=".docx">
+      </div>
+
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">Enviar Solicitud</button>
+  </form>
+</div>

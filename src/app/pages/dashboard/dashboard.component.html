@@ -1,0 +1,58 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">My Projects</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">My Projects</li>
+                </ol>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-6" *ngFor="let project of projects">
+          <!-- small box -->
+          <div [ngClass]="getSchoolStyle(project.escuela)" class="small-box">
+            <div class="inner">
+              <h4>{{ project.nombre_proyecto }}</h4>
+              <p>{{ project.escuela }}</p>
+              <p *ngIf="project.nombre_coordinador">
+                Coordinador: {{ project.nombre_coordinador }}
+              </p>
+              <p *ngIf="project.email_coordinador">
+                Email: {{ project.email_coordinador }}
+              </p>
+            </div>
+            <div class="icon">
+              <img [src]="schoolLogos[project.escuela]" style="width: 100px; height: 100px; position: absolute; right: 0; top: 10px;">
+            </div>
+            <button type="button" class="small-box-footer btn btn-info" [routerLink]="'/project-info'" (click)="goToMoreInfo(project)">
+              More info <i class="fas fa-arrow-circle-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mostrar el mensaje "No estás registrado en ningún proyecto." y el botón "Unirse a un Proyecto" solo si el usuario no tiene proyectos y los datos han sido cargados -->
+    <p *ngIf="projects.length === 0 && dataLoaded">No estás registrado en ningún proyecto.</p>
+    <button *ngIf="projects.length === 0 && dataLoaded" class="btn btn-primary" [routerLink]="'/projects'">Unirse a un Proyecto</button>
+    <!-- Main row -->
+  </section>
+  <!-- /.content -->
+  
+
+
+  
